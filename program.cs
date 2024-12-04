@@ -29,8 +29,7 @@ class Program {
     }
     //---[END OF DT]---
 
-    /*## getting each subject's grade, in which all
-    will be stored as an array ##*/
+    /*## getting each subject's grade, in which all will be stored as an array ##*/
     Console.Write("Type the number of subjects the student studies: "); //used in conjunction with "int numOfSubjects..."
     int numOfSubjects = Convert.ToInt32(Console.ReadLine()); //all user inputs are string, so "Convert.ToInt32" converts it into an integer.
     int[] grades = new int[numOfSubjects]; //creates an array with the same number of indexes as the value of "numOfSubject"
@@ -44,7 +43,7 @@ class Program {
     int studentAverageGrade = findAverageGrade(student.grades);
     student.finalGrade = studentAverageGrade;
 
-    //## outputting the student's name, their subjects' grades (as an array), and the average final grade (10 lines of code below)
+    //## outputting the student's name, their subjects' grades (as an array), and the average final grade
     Console.WriteLine($"----- ----- -----"); //for separating only
 
     Console.WriteLine($"Student's name is: {student.studentName}");
@@ -58,7 +57,7 @@ class Program {
   }
 
   // @@@ FUNCTION(S) @@@
-  //!!function below gets each grade's score (as a percentage) and assigns it to its "gradeForThisSubject" array's respective index
+  //!!function below gets each grade's score (as a percentage) and assigns it to the "grades" array
   static int[] getGrades(int numOfSubjects, int[] grades) {
     for (int i=0; i<numOfSubjects; i++) {
       Console.Write($"Type the grade as a percentage (don't type '%') the student received in subject {i+1}: "); //"i+1" ensures that, if i is 0, then it won't output "Type the grade the student received in subject 0: "
@@ -80,17 +79,16 @@ class Program {
     return grades;
   }
 
-  //!!function below returns the average grade, which is calculated by adding up all of the scores in the "grades" parameter, then divides it by the number of indexes in the same array
+  //!!function below returns the average grade, which is calculated by adding up all of the scores in the "grades" parameter, then dividing it by the number of indexes in the same array
   static int findAverageGrade(int[] grades) {
-    //CONTINUE HERE
     int totalGradeScores = 0;
 
-    //assigning the "totalGradeScores" variable the value of the sum of all the elements within the "grades" parameter (3 lines of code below)
-    for (int i=0; i<grades.Length; i++) { //will essentially be repeated 3 lines (including '//---[START OF DT]---' comment) below
+    //below assigns the "totalGradeScores" variable the value of the sum of all the elements within the "grades" parameter
+    for (int i=0; i<grades.Length; i++) {
       //---[START OF DT]---
       if (devTest.isOn) {
         for (int gradeScore=0; i<grades.Length; gradeScore++) {
-          Console.WriteLine($"[DT] 'totalGradeScores' array before being added by 'grades[{gradeScore}]' (value: {grades[gradeScore]}: {totalGradeScores}"); // [DT]
+          Console.WriteLine($"[DT] 'totalGradeScores' array before being added by 'grades[{gradeScore}]': {totalGradeScores}"); // [DT]
         }
         Console.WriteLine();  //[DT] | makes a new line so "Environment.NewLine" is unnecessary
       }
@@ -99,8 +97,7 @@ class Program {
       totalGradeScores += grades[i];
     }
 
-    //assigning the "averageGrade" variable the mean grade, which is calculated by dividing the "totalGradeScores" variable by the length of the "grades" parameter (1 line of code below)
-    double averageGrade = (double) totalGradeScores / grades.Length;
+    //assigning the "averageGrade" variable the mean grade, which is calculated by dividing the "totalGradeScores" variable by the length of the "grades" parameter
 
     //---[START OF DT]---
     if (devTest.isOn) {
@@ -122,7 +119,7 @@ class Program {
     public int[] grades;
     public int finalGrade;
 
-    //because of the properties (the 4 lines of code below), this will allow the "studentName" attribute to have the value of "student.StudentName"
+    //because of the properties, this will allow the "studentName" attribute to have the value of "student.StudentName"
     public string StudentName {
       get {return studentName;}
       set {studentName = value;}
